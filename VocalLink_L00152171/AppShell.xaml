@@ -4,12 +4,30 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:VocalLink_L00152171"
+    xmlns:views="clr-namespace:VocalLink_L00152171.Views"
     Shell.FlyoutBehavior="Disabled"
     Title="VocalLink_L00152171">
 
-    <ShellContent
+    <!-- <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        Route="MainPage" /> -->
+
+    <ShellContent 
+        Shell.NavBarIsVisible="false" 
+        Title="Login" 
+        ContentTemplate="{DataTemplate views:LoginPage}" 
+        Route="LoginPage" />
+
+    <ShellContent 
+        Shell.NavBarIsVisible="false" 
+        Title="Sign Up" 
+        ContentTemplate="{DataTemplate views:SignUpPage}" 
+        Route="SignUpPage" />
+
+    <ShellContent 
+        Title="Home Page" 
+        ContentTemplate="{DataTemplate views:HomePage}" 
+        Route="HomePage" />
 
 </Shell>

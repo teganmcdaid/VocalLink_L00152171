@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:VocalLink_L00152171.ViewModels"             
+             x:Class="VocalLink_L00152171.Views.LoginPage"
+             Title="LoginPage">
+
+    <ContentPage.BindingContext>
+        <viewmodels:LoginViewModel />
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout Padding="20"
+                      Spacing="10">
+        <Label Text="Login to Vocal Link"
+            FontSize="24"
+            HorizontalOptions="Center"/>
+        <Grid ColumnDefinitions="*,10,250,10,*"
+           RowDefinitions="*,*,*">
+
+            <Border StrokeShape="RoundRectangle 80"
+                 Stroke="{StaticResource Primary}"
+                 StrokeThickness="6"
+                 Grid.Column="2"
+                 Grid.Row="0"
+                 Margin="10">
+                <Image Source="applogo.png"/>
+            </Border>
+            <VerticalStackLayout Grid.Column="2"
+                              Grid.Row="1">
+                <Entry Placeholder="Email"
+                    Text="{Binding UserEmail}"/>
+                <Entry Placeholder="Password"
+                    Text="{Binding Password}"/>
+            </VerticalStackLayout>
+
+            <HorizontalStackLayout Grid.Column="2"
+                                Grid.Row="2"
+                                HorizontalOptions="Center"
+                                >
+                <Button Text="Login"
+                     Command="{Binding LoginCommand}"
+                     BackgroundColor="Green"
+                     TextColor="White"
+                     Margin="15"
+                     WidthRequest="90"/>
+
+                <Button Text="Sign Up"
+                     Command="{Binding SignUpCommand}"
+                     BackgroundColor="{StaticResource Primary}"
+                     TextColor="White"
+                     Margin="15"
+                     WidthRequest="90"/>
+            </HorizontalStackLayout>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>
