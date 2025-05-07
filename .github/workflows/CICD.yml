@@ -1,0 +1,66 @@
+#This workflow demonstrates how you can use verious environments (development, staging, production) in github.
+name: CI/CD Pipeline
+
+# Define when the workflow should run. On a push to master, a PR to master or manually with worfkow_dispatch
+on:
+  pull_request:
+    branches: [master]
+  push:
+    branches: [master]
+
+#some jobs that should run
+jobs:
+#define build job
+  Build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Code_scanning
+        run: echo Imagine we are linting and scanning our code here
+      - name: Compile
+        run: echo Imagine we are compiling our code here
+      - name: Test
+        run: echo Imagine we are testing our code here 
+      - name: ChecksComplete
+        run: echo Checks complete code built sucessfully
+
+    # Define a deploy to development environment job
+  DeployDev:
+    name: Deploy to Development
+    # Job runs only if the event is a pull request
+    if: github.event_name == 'pull_request'
+    # The job needs the build job to pass first
+    needs: [ Build ]
+    runs-on: windows-latest
+    # Define some environment variables
+    environment: 
+      name: Development
+      url: 'http://dev.myapp.com'
+    steps:
+      - name: Deploy
+        run: echo Your code is being deployed to http://dev.myapp.com
+  
+  DeployStaging:
+    name: Deploy to Staging
+  #deploy to staging only if we are commiting to master
+    if: github.ref == 'refs/heads/master'
+    needs: [ Build ]
+    runs-on: windows-latest
+    environment: 
+      name: Staging
+      url: 'http://test.myapp.com'
+    steps:
+    - name: Deploy
+      run: echo I am deploying to staging http://test.myapp.com
+  
+  # Deploy to production environment
+  DeployProduction:
+    name: Deploy to Production
+    needs: [DeployStaging]
+    runs-on: windows-latest
+    environment:
+      name: Production
+      url: 'http://www.myapp.com'
+    steps:
+      - name: Deploy
+        run: echo I am deploying to production
