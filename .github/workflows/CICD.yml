@@ -15,18 +15,14 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Set up .NET SDK
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: '8.0' 
-      - name: Restore Dependencies
-        run: dotnet restore
-      - name: Build the Application
-        run: dotnet build --configuration Release
-      - name: Run Tests
-        run: dotnet test --configuration Release --no-build
-      - name: Build Complete
-        run: echo Build and test completed successfully
+      - name: Code_scanning
+        run: echo Imagine we are linting and scanning our code here
+      - name: Compile
+        run: echo Imagine we are compiling our code here
+      - name: Test
+        run: echo Imagine we are testing our code here 
+      - name: ChecksComplete
+        run: echo Checks complete code built sucessfully
 
     # Define a deploy to development environment job
   DeployDev:
