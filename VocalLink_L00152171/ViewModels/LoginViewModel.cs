@@ -6,11 +6,11 @@ namespace VocalLink_L00152171.ViewModels;
 
 public partial class LoginViewModel : BaseViewModel
 {
-	[ObservableProperty]
-	private string userEmail;
+    [ObservableProperty]
+    private string userEmail;
 
     [ObservableProperty]
-	private string password;
+    private string password;
 
     [RelayCommand]
     async Task LoginAsync()

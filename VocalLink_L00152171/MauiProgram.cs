@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Syncfusion.Maui.Core.Hosting;
 
 namespace VocalLink_L00152171
 {
@@ -6,7 +7,12 @@ namespace VocalLink_L00152171
     {
         public static MauiApp CreateMauiApp()
         {
+            // Register the Syncfusion license key
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NNaF5cXmBCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdmWXped3VSQmJeVExxVktWYUA=");
+
             var builder = MauiApp.CreateBuilder();
+
+            builder.ConfigureSyncfusionCore();
             builder
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>

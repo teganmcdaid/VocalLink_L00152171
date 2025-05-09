@@ -44,11 +44,22 @@ public partial class SignUpViewModel : BaseViewModel
 
         try
         {
-            await Shell.Current.GoToAsync($"///LoginPage", true,
-                                            new Dictionary<string, object>
-                                            {
+            if (!isSinger)
+            {
+                await Shell.Current.GoToAsync($"///LoginPage", true,
+                                                new Dictionary<string, object>
+                                                {
                                                 { "User", user }
-                                            });
+                                                });
+            }
+            else
+            {
+                await Shell.Current.GoToAsync($"///SingerSetupPage", true,
+                                                new Dictionary<string, object>
+                                                {
+                                                { "User", user }
+                                                });
+            }
 
             await App.Database.SaveUserAsync(user);
 

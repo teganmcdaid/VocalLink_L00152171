@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:scheduler="clr-namespace:Syncfusion.Maui.Scheduler;assembly=Syncfusion.Maui.Scheduler"
+             x:Class="VocalLink_L00152171.Views.SingerProfilePage"
+             Title="SingerProfilePage">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <Label Text="{Binding Name}" FontSize="24" FontAttributes="Bold" />
+            <Label Text="{Binding Genre}" FontSize="18" />
+            <Label Text="{Binding Location}" FontSize="18" />
+            <Label Text="{Binding AboutMe}" FontSize="14" />
+
+            <Label Text="Calendar" FontSize="20" FontAttributes="Bold" />
+
+            <scheduler:SfScheduler View="Month"
+                                   AppointmentsSource="{Binding Bookings}">
+                <scheduler:SfScheduler.AppointmentMapping>
+                    <scheduler:SchedulerAppointmentMapping
+                        Subject="Status"
+                        StartTime="StartTime"
+                        EndTime="EndTime"
+                        Background="LightPink" />
+                </scheduler:SfScheduler.AppointmentMapping>
+            </scheduler:SfScheduler>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:VocalLink_L00152171.ViewModels"
+             x:Class="VocalLink_L00152171.Views.SingerSetupPage"
+             Title="SingerSetupPage">
+    
+    <ContentPage.BindingContext>
+        <viewmodels:SingerSetupViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <Label Text="Complete Your Singer Profile" FontSize="24" HorizontalOptions="Center" />
+
+            <Entry Placeholder="Display Name" Text="{Binding Name}" />
+
+            <Picker Title="Select Genre" ItemsSource="{Binding Genres}" SelectedItem="{Binding Genre}" />
+
+            <Entry Placeholder="Location" Text="{Binding Location}" />
+
+            <Editor Placeholder="Tell us about yourself..." AutoSize="TextChanges" Text="{Binding AboutMe}" />
+
+            <Button Text="Save Profile" Command="{Binding SaveProfileCommand}" BackgroundColor="Green" TextColor="White" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

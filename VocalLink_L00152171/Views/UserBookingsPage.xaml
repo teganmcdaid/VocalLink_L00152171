@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:scheduler="clr-namespace:Syncfusion.Maui.Scheduler;assembly=Syncfusion.Maui.Scheduler"
+             x:Class="VocalLink_L00152171.Views.UserBookingsPage"
+             Title="UserBookingsPage">
+    <VerticalStackLayout>
+        <scheduler:SfScheduler x:Name="Scheduler"
+                           View="Month"
+                           AppointmentsSource="{Binding Bookings}">
+            <scheduler:SfScheduler.AppointmentMapping>
+                <scheduler:SchedulerAppointmentMapping
+                Subject="Status"
+                StartTime="StartTime"
+                EndTime="EndTime"
+                Background="LightBlue" />
+            </scheduler:SfScheduler.AppointmentMapping>
+        </scheduler:SfScheduler>
+    </VerticalStackLayout>
+</ContentPage>
