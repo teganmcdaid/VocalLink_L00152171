@@ -44,11 +44,23 @@ public partial class SignUpViewModel : BaseViewModel
 
         try
         {
-            await Shell.Current.GoToAsync($"///LoginPage", true,
-                                            new Dictionary<string, object>
-                                            {
+            if (!isSinger)
+            {
+                await Shell.Current.GoToAsync("//LoginPage", true,
+                                                new Dictionary<string, object>
+                                                {
                                                 { "User", user }
-                                            });
+                                                });
+            }
+            else
+            {
+                Preferences.Default.Set("UserEmail", user.UserEmail);
+                await Shell.Current.GoToAsync("SingerSetupPage", true,
+                                                new Dictionary<string, object>
+                                                {
+                                                { "User", user }
+                                                });
+            }
 
             await App.Database.SaveUserAsync(user);
 
@@ -62,7 +74,7 @@ public partial class SignUpViewModel : BaseViewModel
     [RelayCommand]
     async Task CancelAsync()
     {
-        await Shell.Current.GoToAsync($"///LoginPage", true);
+        await Shell.Current.GoToAsync("//LoginPage", true);
     }
 
     //clear fields method to be used when page opens

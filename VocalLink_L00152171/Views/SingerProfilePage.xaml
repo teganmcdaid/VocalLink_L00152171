@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="VocalLink_L00152171.Views.SingerProfilePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:model="clr-namespace:VocalLink_L00152171.Model"
+    xmlns:vm="clr-namespace:VocalLink_L00152171.ViewModels"
+    Title="SingerProfilePage"
+    x:DataType="vm:SingerProfileViewModel">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <!--  basic singer info  -->
+            <Label
+                FontAttributes="Bold"
+                FontSize="24"
+                Text="{Binding Name}" />
+            <Label FontSize="18" Text="{Binding Genre}" />
+            <Label FontSize="18" Text="{Binding Location}" />
+            <Label FontSize="14" Text="{Binding AboutMe}" />
+
+            <!--  title for the calendar  -->
+            <Label
+                FontAttributes="Bold"
+                FontSize="20"
+                Text="Select a date to book:" />
+
+            <!--  days of the week headers  -->
+            <Grid
+                Margin="4,0,4,5"
+                ColumnDefinitions="*,*,*,*,*,*,*"
+                ColumnSpacing="2">
+                <Label
+                    Grid.Column="0"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    Text="{Binding AlignedWeekDays[0]}" />
+                <Label
+                    Grid.Column="1"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    Text="{Binding AlignedWeekDays[1]}" />
+                <Label
+                    Grid.Column="2"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    Text="{Binding AlignedWeekDays[2]}" />
+                <Label
+                    Grid.Column="3"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    Text="{Binding AlignedWeekDays[3]}" />
+                <Label
+                    Grid.Column="4"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    Text="{Binding AlignedWeekDays[4]}" />
+                <Label
+                    Grid.Column="5"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    Text="{Binding AlignedWeekDays[5]}" />
+                <Label
+                    Grid.Column="6"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    Text="{Binding AlignedWeekDays[6]}" />
+            </Grid>
+
+            <!--  calendar  -->
+            <CollectionView ItemsSource="{Binding DateCells}" SelectionMode="None">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout
+                        x:Name="CalendarGridLayout"
+                        HorizontalItemSpacing="4"
+                        Orientation="Vertical"
+                        Span="7"
+                        VerticalItemSpacing="4" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:DateCell">
+                        <Frame
+                            Padding="10"
+                            BackgroundColor="{Binding Status, Converter={StaticResource StatusToColorConverter}}"
+                            BorderColor="Black"
+                            CornerRadius="10"
+                            HasShadow="True"
+                            HeightRequest="60"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            WidthRequest="60">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:SingerProfileViewModel}}, Path=DateTappedCommand}" CommandParameter="{Binding .}" />
+                            </Frame.GestureRecognizers>
+                            <Label
+                                FontSize="14"
+                                HorizontalOptions="Center"
+                                Text="{Binding Date, StringFormat='{0:MMM dd}'}"
+                                TextColor="White"
+                                VerticalOptions="Center" />
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!--  Booking Status Legend  -->
+            <Label FontAttributes="Bold" Text="Legend:" />
+            <HorizontalStackLayout Spacing="15">
+                <HorizontalStackLayout>
+                    <BoxView
+                        HeightRequest="20"
+                        WidthRequest="20"
+                        Color="Green" />
+                    <Label
+                        Margin="5,0,0,0"
+                        Text="Available"
+                        VerticalOptions="Center" />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <BoxView
+                        HeightRequest="20"
+                        WidthRequest="20"
+                        Color="Blue" />
+                    <Label
+                        Margin="5,0,0,0"
+                        Text="Booked"
+                        VerticalOptions="Center" />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <BoxView
+                        HeightRequest="20"
+                        WidthRequest="20"
+                        Color="Orange" />
+                    <Label
+                        Margin="5,0,0,0"
+                        Text="Pending"
+                        VerticalOptions="Center" />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <BoxView
+                        HeightRequest="20"
+                        WidthRequest="20"
+                        Color="Red" />
+                    <Label
+                        Margin="5,0,0,0"
+                        Text="Declined"
+                        VerticalOptions="Center" />
+                </HorizontalStackLayout>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
