@@ -12,12 +12,16 @@ public partial class HomePage : ContentPage
 	}
 
     //used to enable the flyout menu when on home page
-    protected override void OnAppearing()
+    protected override async void OnAppearing()
     {
         base.OnAppearing();
-        //load singers every time on arrival 
-        (BindingContext as HomePageViewModel)?.LoadSingers();
+        
         welcomeLabel.Text = ("Hello" + Preferences.Get("UserEmail", "Guest"));
+
+        if (BindingContext is HomePageViewModel vm)
+        {
+            await vm.LoadDataAsync(); 
+        }
 
         //enable flyout navigation
         if (Shell.Current is AppShell shell)
