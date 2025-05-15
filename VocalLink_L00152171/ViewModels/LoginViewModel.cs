@@ -46,21 +46,22 @@ public partial class LoginViewModel : BaseViewModel
                 user.IsSinger = u.IsSinger;
                 await App.Current.MainPage.DisplayAlert("Success", "You have successfully logged in.", "OK");
 
+                //clear prefrences incase previosuly set
+                Preferences.Default.Clear();
+                //set preferences so user will be accessible
+                Preferences.Default.Set("UserEmail", user.UserEmail);
+                Preferences.Default.Set("Password", user.Password);
+                Preferences.Default.Set("IsSinger", user.IsSinger);
+
                 try
                 {
 
                     //navigate to HomePage
-                    await Shell.Current.GoToAsync($"///HomePage", true,
+                    await Shell.Current.GoToAsync("//HomePage", true,
                                                     new Dictionary<string, object>
                                                     {
                                                 { "User", user }
                                                     });
-                    //clear prefrences incase previosuly set
-                    Preferences.Default.Clear();
-                    //set preferences so user will be accessible
-                    Preferences.Default.Set("UserEmail", user.UserEmail);
-                    Preferences.Default.Set("Password", user.Password);
-                    Preferences.Default.Set("IsSinger", user.IsSinger);
                 }
                 catch (Exception ex)
                 {
@@ -87,7 +88,7 @@ public partial class LoginViewModel : BaseViewModel
     {
         try
         {
-            await Shell.Current.GoToAsync($"///SignUpPage", true);
+            await Shell.Current.GoToAsync("SignUpPage", true);
         }
         catch (Exception ex)
         {

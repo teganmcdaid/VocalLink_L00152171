@@ -5,44 +5,38 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:VocalLink_L00152171"
     xmlns:views="clr-namespace:VocalLink_L00152171.Views"
-    Shell.FlyoutBehavior="Disabled"
+    Shell.FlyoutBehavior="Flyout"
     Title="VocalLink_L00152171">
 
-    <!-- <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" /> -->
+    <!-- hide the back button, not needed as flyout menu is there for navigation -->
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Shell">
+                <Setter Property="BackButtonBehavior">
+                    <Setter.Value>
+                        <BackButtonBehavior IsVisible="False" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </Shell.Resources>
+    
+    <!-- Nav Bar -->
+    <FlyoutItem Title="Logout" Icon="logout.png">
+        <ShellContent Title="Login" 
+                  Route="LoginPage"
+                  ContentTemplate="{DataTemplate views:LoginPage}" />
+    </FlyoutItem>
+    
+    <FlyoutItem Title="Home" Icon="home.png">
+        <ShellContent Title="Home" 
+                      Route="HomePage"
+                      ContentTemplate="{DataTemplate views:HomePage}" />
+    </FlyoutItem>
 
-    <ShellContent 
-        Shell.NavBarIsVisible="false" 
-        Title="Login" 
-        ContentTemplate="{DataTemplate views:LoginPage}" 
-        Route="LoginPage" />
-
-    <ShellContent 
-        Shell.NavBarIsVisible="false" 
-        Title="Sign Up" 
-        ContentTemplate="{DataTemplate views:SignUpPage}" 
-        Route="SignUpPage" />
-
-    <ShellContent 
-        Title="Home Page" 
-        ContentTemplate="{DataTemplate views:HomePage}" 
-        Route="HomePage" />
-
-    <ShellContent 
-    Title="Singer Set Up" 
-    ContentTemplate="{DataTemplate views:SingerSetupPage}" 
-    Route="SingerSetupPage" />
-
-    <ShellContent 
-    Title="UserBookingsPage" 
-    ContentTemplate="{DataTemplate views:UserBookingsPage}" 
-    Route="UserBookingsPage" />
-
-    <ShellContent 
-Title="SingerProfilePage" 
-ContentTemplate="{DataTemplate views:SingerProfilePage}" 
-Route="SingerProfilePage" />
-
+    <FlyoutItem Title="My Bookings" Icon="bookings.png">
+        <ShellContent Title="Bookings" 
+                      Route="UserBookingsPage"
+                      ContentTemplate="{DataTemplate views:UserBookingsPage}" />
+    </FlyoutItem>
 </Shell>

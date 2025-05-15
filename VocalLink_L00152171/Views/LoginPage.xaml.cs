@@ -10,13 +10,21 @@ public partial class LoginPage : ContentPage
         BindingContext = new LoginViewModel();
     }
 
-    //used to clear the fields when page is first opened
+    
     protected override void OnAppearing()
     {
         base.OnAppearing();
+
+        //clear fields when page opened
         if (BindingContext is LoginViewModel viewModel)
         {
             viewModel.ClearFields();
+        }
+
+        //disable flyout navigation
+        if (Shell.Current is AppShell shell)
+        {
+            shell.DisableFlyout();
         }
     }
 }

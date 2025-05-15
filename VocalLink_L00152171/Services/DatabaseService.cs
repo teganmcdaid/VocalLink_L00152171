@@ -41,9 +41,13 @@ public class DatabaseService
         return conn.Table<Booking>().Where(b => b.BusinessEmail == email).ToListAsync();
     }
 
+    //check if booking already exists and update it e.g. status change
     public Task<int> SaveBookingAsync(Booking booking)
     {
-        return conn.InsertAsync(booking);
+        if (booking.Id != 0)
+            return conn.UpdateAsync(booking);
+        else
+            return conn.InsertAsync(booking);
     }
 
     public Task<int> DeleteBookingAsync(Booking booking)

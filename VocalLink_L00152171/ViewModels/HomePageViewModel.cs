@@ -25,7 +25,7 @@ public partial class HomePageViewModel : BaseViewModel
         }
     }
 
-    private async void LoadSingers()
+    public async void LoadSingers()
     {
         var singerList = await App.Database.GetAllSingersAsync();
         Singers = new ObservableCollection<Singer>(singerList);

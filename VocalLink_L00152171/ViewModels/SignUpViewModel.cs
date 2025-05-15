@@ -46,7 +46,7 @@ public partial class SignUpViewModel : BaseViewModel
         {
             if (!isSinger)
             {
-                await Shell.Current.GoToAsync($"///LoginPage", true,
+                await Shell.Current.GoToAsync("//LoginPage", true,
                                                 new Dictionary<string, object>
                                                 {
                                                 { "User", user }
@@ -54,7 +54,8 @@ public partial class SignUpViewModel : BaseViewModel
             }
             else
             {
-                await Shell.Current.GoToAsync($"///SingerSetupPage", true,
+                Preferences.Default.Set("UserEmail", user.UserEmail);
+                await Shell.Current.GoToAsync("SingerSetupPage", true,
                                                 new Dictionary<string, object>
                                                 {
                                                 { "User", user }
@@ -73,7 +74,7 @@ public partial class SignUpViewModel : BaseViewModel
     [RelayCommand]
     async Task CancelAsync()
     {
-        await Shell.Current.GoToAsync($"///LoginPage", true);
+        await Shell.Current.GoToAsync("//LoginPage", true);
     }
 
     //clear fields method to be used when page opens

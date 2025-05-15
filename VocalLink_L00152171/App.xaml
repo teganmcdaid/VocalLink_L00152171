@@ -11,6 +11,8 @@
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <converters:InverseBoolConverter x:Key="InverseBoolConverter" />
+            <converters:StatusToColorConverter x:Key="StatusToColorConverter" />
+            <converters:PendingBookingVisibilityConverter x:Key="PendingBookingVisibilityConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

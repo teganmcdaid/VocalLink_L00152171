@@ -1,33 +1,48 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodels="clr-namespace:VocalLink_L00152171.ViewModels"  
-             x:Class="VocalLink_L00152171.Views.HomePage"
-             Title="HomePage">
+<ContentPage
+    x:Class="VocalLink_L00152171.Views.HomePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:VocalLink_L00152171.ViewModels"
+    Title="HomePage">
     <ContentPage.BindingContext>
         <viewmodels:HomePageViewModel />
     </ContentPage.BindingContext>
 
     <ScrollView>
         <VerticalStackLayout Padding="10" Spacing="10">
+            <Label
+                x:Name="welcomeLabel"
+                FontAttributes="Bold"
+                FontSize="20"
+                HorizontalOptions="Center"
+                TextColor="DarkBlue" />
 
-            <Label Text="Available Singers"
-                   FontSize="22"
-                   HorizontalOptions="Center"
-                   IsVisible="{Binding IsSinger, Converter={StaticResource InverseBoolConverter}}" />
+            <Label
+                FontSize="22"
+                HorizontalOptions="Center"
+                IsVisible="{Binding IsSinger, Converter={StaticResource InverseBoolConverter}}"
+                Text="Available Singers" />
 
-            <CollectionView ItemsSource="{Binding Singers}"
-                            IsVisible="{Binding IsSinger, Converter={StaticResource InverseBoolConverter}}">
+            <CollectionView IsVisible="{Binding IsSinger, Converter={StaticResource InverseBoolConverter}}" ItemsSource="{Binding Singers}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame Padding="10" Margin="5" BorderColor="Gray" CornerRadius="10">
+                        <Frame
+                            Margin="5"
+                            Padding="10"
+                            BorderColor="Gray"
+                            CornerRadius="10">
                             <VerticalStackLayout>
-                                <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="18" />
-                                <Label Text="{Binding Genre}" FontSize="14" />
-                                <Label Text="{Binding Location}" FontSize="14" />
-                                <Button Text="View Profile" 
-                                        Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ViewProfileCommand}"
-                                        CommandParameter="{Binding}"/>
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="18"
+                                    Text="{Binding Name}" />
+                                <Label FontSize="14" Text="{Binding Genre}" />
+                                <Label FontSize="14" Text="{Binding Location}" />
+                                <Button
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ViewProfileCommand}"
+                                    CommandParameter="{Binding}"
+                                    Text="View Profile" />
                             </VerticalStackLayout>
                         </Frame>
                     </DataTemplate>
