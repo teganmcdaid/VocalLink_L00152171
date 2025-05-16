@@ -17,6 +17,15 @@
                 FontSize="20"
                 HorizontalOptions="Center"
                 TextColor="DarkBlue" />
+            <!--  what the singers see on home page  -->
+            <Button
+                BackgroundColor="DarkBlue"
+                Command="{Binding EditProfileCommand}"
+                CornerRadius="10"
+                IsVisible="{Binding IsSinger}"
+                Text="Edit My Profile"
+                TextColor="White" />
+
             <Label
                 FontSize="22"
                 HorizontalOptions="Center"
@@ -49,7 +58,7 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-
+            <!--  what the users see on home page  -->
             <Label
                 FontSize="22"
                 HorizontalOptions="Center"

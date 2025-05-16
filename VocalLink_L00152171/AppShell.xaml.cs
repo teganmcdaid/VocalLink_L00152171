@@ -13,6 +13,7 @@ namespace VocalLink_L00152171
             Routing.RegisterRoute("HomePage", typeof(HomePage));
             Routing.RegisterRoute("SingerProfilePage", typeof(SingerProfilePage));
             Routing.RegisterRoute("UserBookingsPage", typeof(UserBookingsPage));
+            Routing.RegisterRoute("SingerEditPage", typeof(SingerEditPage));
 
             Task.Run(async () =>
             {

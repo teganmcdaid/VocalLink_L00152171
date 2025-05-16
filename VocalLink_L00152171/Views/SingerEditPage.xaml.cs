@@ -1,19 +1,22 @@
-using VocalLink_L00152171.Model;
 using VocalLink_L00152171.ViewModels;
 
 namespace VocalLink_L00152171.Views;
 
-public partial class SingerProfilePage : ContentPage
-{
-    public SingerProfilePage(Singer selectedSinger)
-    {
-        InitializeComponent();
-        BindingContext = new SingerProfileViewModel(selectedSinger);
-    }
 
+public partial class SingerEditPage : ContentPage
+{
+	public SingerEditPage()
+	{
+		InitializeComponent();
+	}
     protected override async void OnAppearing()
     {
         base.OnAppearing();
+
+        if (BindingContext is SingerEditViewModel vm)
+        {
+            await vm.LoadSingerAsync();
+        }
 
         //disable flyout navigation
         if (Shell.Current is AppShell shell)

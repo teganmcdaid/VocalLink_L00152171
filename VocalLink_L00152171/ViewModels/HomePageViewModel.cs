@@ -23,8 +23,6 @@ public partial class HomePageViewModel : BaseViewModel
 
     public HomePageViewModel()
     {
-        //IsSinger = Preferences.Default.Get("IsSinger", false);
-        //UserEmail = Preferences.Default.Get("UserEmail", "Default");
 
     }
 
@@ -76,5 +74,11 @@ public partial class HomePageViewModel : BaseViewModel
             .ToList();
 
         Bookings = new ObservableCollection<Booking>(filtered);
+    }
+
+    [RelayCommand]
+    async Task EditProfileAsync()
+    {
+        await Shell.Current.Navigation.PushAsync(new SingerEditPage());
     }
 }
