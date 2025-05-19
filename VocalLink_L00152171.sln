@@ -5,6 +5,8 @@ VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VocalLink-L00152171", "VocalLink_L00152171\VocalLink-L00152171.csproj", "{F7E69AC0-D267-48EC-B549-EBFF7D209680}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VocalLink.Tests", "VocalLink.Tests\VocalLink.Tests.csproj", "{A11C6CDF-FC61-436D-8F16-30EF7B40EED0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,6 +19,10 @@ Global
 		{F7E69AC0-D267-48EC-B549-EBFF7D209680}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7E69AC0-D267-48EC-B549-EBFF7D209680}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F7E69AC0-D267-48EC-B549-EBFF7D209680}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{A11C6CDF-FC61-436D-8F16-30EF7B40EED0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A11C6CDF-FC61-436D-8F16-30EF7B40EED0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A11C6CDF-FC61-436D-8F16-30EF7B40EED0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A11C6CDF-FC61-436D-8F16-30EF7B40EED0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

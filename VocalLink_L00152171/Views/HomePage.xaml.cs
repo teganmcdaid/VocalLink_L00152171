@@ -15,9 +15,8 @@ public partial class HomePage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        //load singers every time on arrival 
-        (BindingContext as HomePageViewModel)?.LoadSingers();
-        welcomeLabel.Text = ("Hello" + Preferences.Get("UserEmail", "Guest"));
+        
+        welcomeLabel.Text = ("Hello " + Preferences.Get("UserEmail", "Guest"));
 
         //enable flyout navigation
         if (Shell.Current is AppShell shell)
