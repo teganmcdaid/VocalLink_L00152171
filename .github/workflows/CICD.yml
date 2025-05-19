@@ -28,7 +28,7 @@ jobs:
         run: dotnet restore VocalLink_L00152171.sln
         
       - name: Build
-        run: dotnet build VocalLink_L00152171.sln --configuration Release
+        run: dotnet build VocalLink_L00152171/VocalLink_L00152171/VocalLink-L00152171.csproj --configuration Release
 
       - name: Test
         run: dotnet test VocalLink_L00152171/VocalLink.Tests/VocalLink.Tests.csproj 
