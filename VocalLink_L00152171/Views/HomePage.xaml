@@ -17,7 +17,48 @@
                 FontSize="20"
                 HorizontalOptions="Center"
                 TextColor="DarkBlue" />
+            <!--  what the singers see on home page  -->
+            <Button
+                BackgroundColor="DarkBlue"
+                Command="{Binding EditProfileCommand}"
+                CornerRadius="10"
+                IsVisible="{Binding IsSinger}"
+                Text="Edit My Profile"
+                TextColor="White" />
 
+            <Label
+                FontSize="22"
+                HorizontalOptions="Center"
+                IsVisible="{Binding IsSinger}"
+                Text="Upcoming Bookings" />
+
+            <CollectionView IsVisible="{Binding IsSinger}" ItemsSource="{Binding Bookings}">
+                <CollectionView.EmptyView>
+                    <Label
+                        FontAttributes="Italic"
+                        HorizontalOptions="Center"
+                        Text="You have no bookings yet."
+                        TextColor="Gray"
+                        VerticalOptions="Center" />
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame
+                            Margin="5"
+                            Padding="10"
+                            BorderColor="Gray"
+                            CornerRadius="10">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Date, StringFormat='Date: {0:dd MMM yyyy}'}" />
+                                <Label Text="{Binding BusinessEmail, StringFormat='Booked by: {0}'}" />
+                                <Label Text="{Binding Status, StringFormat='Status: {0}'}" />
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!--  what the users see on home page  -->
             <Label
                 FontSize="22"
                 HorizontalOptions="Center"
@@ -25,6 +66,14 @@
                 Text="Available Singers" />
 
             <CollectionView IsVisible="{Binding IsSinger, Converter={StaticResource InverseBoolConverter}}" ItemsSource="{Binding Singers}">
+                <CollectionView.EmptyView>
+                    <Label
+                        FontAttributes="Italic"
+                        HorizontalOptions="Center"
+                        Text="No singers Available."
+                        TextColor="Gray"
+                        VerticalOptions="Center" />
+                </CollectionView.EmptyView>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame
