@@ -15,13 +15,31 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Code_scanning
-        run: echo Imagine we are linting and scanning our code here
-      - name: Compile
-        run: echo Imagine we are compiling our code here
+      
+      - name: Setup_dotnet
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+          
+      - name: Install_workloads
+        run: dotnet workload install maui
+        
+      - name: Restore_dependencies
+        run: dotnet restore VocalLink_L00152171.sln
+        
+      - name: Build
+        run: dotnet build YourSolution.sln --configuration Release
+
       - name: Test
-        run: echo Imagine we are testing our code here 
-      - name: ChecksComplete
+        run: dotnet test VocalLink_L00152171.Tests/VocalLink_L00152171.Tests.csproj 
+        
+      - name: Publish Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: maui-build
+          path: VocalLink_L00152171\bin\Release\net8.0-windows10.0.19041.0\win10-x64\
+         
+      - name: BuildComplete
         run: echo Checks complete code built sucessfully
 
     # Define a deploy to development environment job
