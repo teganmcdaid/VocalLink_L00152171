@@ -55,9 +55,23 @@ jobs:
       name: Development
       url: 'https://maui-booking-app-hhfwawhhbcexfpes.westeurope-01.azurewebsites.net'
     steps:
-      - name: Deploy
-        run: echo Your code is being deployed to https://maui-booking-app-hhfwawhhbcexfpes.westeurope-01.azurewebsites.net
-  
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Publish Project
+        run: dotnet publish VocalLink_L00152171.sln --configuration Release --output ./publish
+      
+      - name: 'Run Azure webapp deploy action using publish profile credentials'
+        uses: azure/webapps-deploy@v3
+        with: 
+          app-name: maui-booking-app 
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE  }} 
+          package: ./publish
+          
   DeployStaging:
     name: Deploy to Staging
   #deploy to staging only if we are commiting to master
@@ -80,19 +94,5 @@ jobs:
       name: Production
       url: 'https://maui-booking-app-hhfwawhhbcexfpes.westeurope-01.azurewebsites.net'
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup .NET SDK
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '8.0.x'
-
-      - name: Publish Project
-        run: dotnet publish VocalLink_L00152171.sln --configuration Release --output ./publish
-      
-      - name: 'Run Azure webapp deploy action using publish profile credentials'
-        uses: azure/webapps-deploy@v3
-        with: 
-          app-name: maui-booking-app 
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE  }} 
-          package: ./publish
+      - name: Deploy
+        run: echo I am deploying to production
