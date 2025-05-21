@@ -31,7 +31,7 @@ jobs:
         run: dotnet build VocalLink_L00152171.sln 
 
       - name: Test
-        run: dotnet test VocalLink_L00152171/VocalLink.Tests/VocalLink.Tests.csproj 
+        run: dotnet test VocalLink.Tests/VocalLink.Tests.csproj 
         
       - name: Publish Artifacts
         uses: actions/upload-artifact@v4
