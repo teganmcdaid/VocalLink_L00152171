@@ -53,11 +53,25 @@ jobs:
     # Define some environment variables
     environment: 
       name: Development
-      url: 'http://dev.myapp.com'
+      url: 'https://maui-booking-app-hhfwawhhbcexfpes.westeurope-01.azurewebsites.net'
     steps:
-      - name: Deploy
-        run: echo Your code is being deployed to http://dev.myapp.com
-  
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Publish Project
+        run: dotnet publish VocalLink_L00152171.sln --configuration Release --output ./publish --framework net8.0
+      
+      - name: 'Run Azure webapp deploy action using publish profile credentials'
+        uses: azure/webapps-deploy@v3
+        with: 
+          app-name: maui-booking-app 
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE  }} 
+          package: ./publish
+          
   DeployStaging:
     name: Deploy to Staging
   #deploy to staging only if we are commiting to master
@@ -66,10 +80,10 @@ jobs:
     runs-on: windows-latest
     environment: 
       name: Staging
-      url: 'http://test.myapp.com'
+      url: 'https://maui-booking-app-hhfwawhhbcexfpes.westeurope-01.azurewebsites.net'
     steps:
     - name: Deploy
-      run: echo I am deploying to staging http://test.myapp.com
+      run: echo I am deploying to staging https://maui-booking-app-hhfwawhhbcexfpes.westeurope-01.azurewebsites.net
   
   # Deploy to production environment
   DeployProduction:
@@ -78,7 +92,7 @@ jobs:
     runs-on: windows-latest
     environment:
       name: Production
-      url: 'http://www.myapp.com'
+      url: 'https://maui-booking-app-hhfwawhhbcexfpes.westeurope-01.azurewebsites.net'
     steps:
       - name: Deploy
         run: echo I am deploying to production
