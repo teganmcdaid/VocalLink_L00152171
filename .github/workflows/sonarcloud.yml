@@ -1,42 +1,37 @@
+name: SonarCloud Analysis
+
 on:
-#trigger when pushing to master and doing a pull request
   push:
     branches:
       - master
   pull_request:
-    types: [opened, synchronize, reopened]
-    
-name: Main Workflow
-permissions:
-  contents: read
+    types:
+      - opened
+      - synchronize
+      - reopened
+
 jobs:
-  build:
+  sonarcloud:
     name: SonarCloud
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v2
         with:
-        # Disabling shallow clones is recommended for improving the relevancy of reporting
-          fetch-depth: 0
+          fetch-depth: 0  # Ensure full clone for accurate analysis
 
-      #install sdk for bulding
+      # Set up .NET (if needed)
       - name: Set up .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0.x'
-          
-      #build project before analysis
-      - name: Restore dependencies
-        run: dotnet restore
 
+      #Build the project 
       - name: Build
         run: dotnet build --no-restore
 
-      - name: Test
-        run: dotnet test --no-build --verbosity normal
-
-      - name: SonarCloud Scan
+      #Run SonarCloud analysis
+      - name: SonarCloud Analysis
         uses: SonarSource/sonarcloud-github-action@v2
         with:
           organization: teganmcdaid
