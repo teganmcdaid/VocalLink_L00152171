@@ -1,14 +1,10 @@
 name: SonarCloud Analysis
-
+#run on push to master
 on:
-  push:
-    branches:
-      - master
   pull_request:
-    types:
-      - opened
-      - synchronize
-      - reopened
+    branches: [master]
+  push:
+    branches: [master]
 
 jobs:
   sonarcloud:
@@ -16,23 +12,26 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0  # Ensure full clone for accurate analysis
+      - uses: actions/checkout@v4
 
       # Set up .NET (if needed)
-      - name: Set up .NET
+      - name: Setup_dotnet
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0.x'
 
-      #Build the project 
+      - name: Install_workloads
+        run: dotnet workload install maui 
+
+      - name: Restore_dependencies
+        run: dotnet restore VocalLink_L00152171.sln
+
       - name: Build
-        run: dotnet build --no-restore
+        run: dotnet build VocalLink_L00152171.sln
 
       #Run SonarCloud analysis
       - name: SonarCloud Analysis
-        uses: SonarSource/sonarcloud-github-action@v2
+        uses: SonarSource/sonarcloud-github-action@v4
         with:
           organization: teganmcdaid
           projectKey: VocalLink_L00152171
