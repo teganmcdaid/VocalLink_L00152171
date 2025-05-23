@@ -14,7 +14,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      # Set up .NET (if needed)
       - name: Setup_dotnet
         uses: actions/setup-dotnet@v4
         with:
@@ -23,16 +22,26 @@ jobs:
       - name: Install_workloads
         run: dotnet workload install maui 
 
+      - name: Install SonarScanner
+        run: dotnet tool install --global dotnet-sonarscanner
+
+      #need to add tool to path so recognised
+      - name: Add scanner to PATH
+        run: echo "${{ env.USERPROFILE }}\.dotnet\tools" >> $GITHUB_PATH
+
+      #run analysis
+      - name: Start SonarCloud
+        run: dotnet sonarscanner begin /k:"VocalLink_L00152171" /o:"teganmcdaid" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
       - name: Restore_dependencies
         run: dotnet restore VocalLink_L00152171.sln
 
       - name: Build
         run: dotnet build VocalLink_L00152171.sln
 
-      #Run SonarCloud analysis
-      - name: SonarCloud Analysis
-        uses: SonarSource/sonarcloud-github-action@v2
-        with:
-          organization: teganmcdaid
-          projectKey: VocalLink_L00152171
-          token: ${{ secrets.SONAR_TOKEN }}
+      - name: End SonarCloud
+        run: dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
