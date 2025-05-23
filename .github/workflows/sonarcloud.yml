@@ -12,7 +12,7 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v2
 
       # Set up .NET (if needed)
       - name: Setup_dotnet
@@ -31,7 +31,7 @@ jobs:
 
       #Run SonarCloud analysis
       - name: SonarCloud Analysis
-        uses: SonarSource/sonarcloud-github-action@v4
+        uses: SonarSource/sonarcloud-github-action@v2
         with:
           organization: teganmcdaid
           projectKey: VocalLink_L00152171
