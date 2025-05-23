@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\VocalLink_L00152171\VocalLink-L00152171.csproj" />
+    <ProjectReference Include="..\VocalLink_L00152171\VocalLinkL00152171.csproj" />
   </ItemGroup>
 
 </Project>
