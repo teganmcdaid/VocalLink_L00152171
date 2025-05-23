@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VocalLink-L00152171", "VocalLink_L00152171\VocalLink-L00152171.csproj", "{F7E69AC0-D267-48EC-B549-EBFF7D209680}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VocalLinkL00152171", "VocalLink_L00152171\VocalLinkL00152171.csproj", "{F7E69AC0-D267-48EC-B549-EBFF7D209680}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VocalLink.Tests", "VocalLink.Tests\VocalLink.Tests.csproj", "{A11C6CDF-FC61-436D-8F16-30EF7B40EED0}"
 EndProject
@@ -26,5 +26,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {884B5689-87FE-4064-81D3-FB28D369CEC9}
 	EndGlobalSection
 EndGlobal
