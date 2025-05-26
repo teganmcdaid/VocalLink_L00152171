@@ -4,8 +4,8 @@ namespace VocalLink_L00152171.Views;
 
 public partial class SingerSetupPage : ContentPage
 {
-	public SingerSetupPage()
-	{
+    public SingerSetupPage()
+    {
         InitializeComponent();
         BindingContext = new SingerSetupViewModel();
     }

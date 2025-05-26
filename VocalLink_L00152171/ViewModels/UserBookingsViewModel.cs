@@ -13,7 +13,7 @@ public partial class UserBookingsViewModel : BaseViewModel
 
     public UserBookingsViewModel()
     {
-      
+
     }
 
     public async void LoadBookingsAsync()

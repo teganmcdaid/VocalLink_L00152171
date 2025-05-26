@@ -7,7 +7,7 @@ namespace VocalLink_L00152171.ViewModels;
 
 public partial class SingerSetupViewModel : BaseViewModel
 {
-    
+
     [ObservableProperty]
     private string name;
 
@@ -57,7 +57,7 @@ public partial class SingerSetupViewModel : BaseViewModel
             AboutMe = AboutMe
         };
 
-        await App.Database.SaveSingerProfileAsync(singer); 
+        await App.Database.SaveSingerProfileAsync(singer);
 
         await Shell.Current.DisplayAlert("Success", "Your singer profile has been saved.", "OK");
         await Shell.Current.GoToAsync("//LoginPage");

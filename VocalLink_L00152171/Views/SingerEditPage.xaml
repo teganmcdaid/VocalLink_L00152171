@@ -4,43 +4,58 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:vm="clr-namespace:VocalLink_L00152171.ViewModels"
-    Title="SingerEditPage">
+    Title=""
+    BackgroundColor="#E6F0F7">
 
     <ContentPage.BindingContext>
         <vm:SingerEditViewModel />
     </ContentPage.BindingContext>
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="15">
+        <VerticalStackLayout Padding="20" Spacing="15" WidthRequest="500">
+            <Border StrokeShape="RoundRectangle 80" WidthRequest="150"
+                    Stroke="{StaticResource Primary}"
+                    StrokeThickness="6"
+                    Margin="10">
+                <Image Source="singerpage.png"/>
+            </Border>
             <Label
                 FontSize="24"
                 HorizontalOptions="Center"
                 Text="Edit Your Profile" />
 
-            <Entry Placeholder="Display Name" Text="{Binding Name}" />
+            <Entry Placeholder="Display Name" Text="{Binding Name}"
+                   BackgroundColor="White"/>
 
             <Picker
                 Title="Select Genre"
                 ItemsSource="{Binding Genres}"
-                SelectedItem="{Binding Genre}" />
+                SelectedItem="{Binding Genre}"
+                BackgroundColor="White"/>
 
-            <Entry Placeholder="Location" Text="{Binding Location}" />
+            <Entry Placeholder="Location" Text="{Binding Location}"
+                   BackgroundColor="White"/>
 
             <Editor
                 AutoSize="TextChanges"
                 Placeholder="Tell us about yourself..."
-                Text="{Binding AboutMe}" />
+                Text="{Binding AboutMe}"
+                BackgroundColor="White"/>
 
             <HorizontalStackLayout Spacing="10">
                 <Button
                     BackgroundColor="Green"
                     Command="{Binding SaveCommand}"
                     Text="Save"
-                    TextColor="White" />
+                    TextColor="White"
+                    Margin="15" 
+                    WidthRequest="90"/>
                 <Button
                     BackgroundColor="Gray"
                     Command="{Binding CancelCommand}"
                     Text="Cancel"
-                    TextColor="White" />
+                    TextColor="White"
+                    Margin="15" 
+                    WidthRequest="90"/>
             </HorizontalStackLayout>
         </VerticalStackLayout>
     </ScrollView>

@@ -18,5 +18,6 @@ public partial class SignUpPage : ContentPage
         {
             viewModel.ClearFields();
         }
+
     }
 }

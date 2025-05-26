@@ -4,11 +4,11 @@ using VocalLink_L00152171.Services;
 
 namespace VocalLink_L00152171.Converters
 {
-    
-        public class PendingBookingVisibilityConverter : IValueConverter
-        {
 
-        private readonly IPreferencesWrapper _preferences;
+    public class PendingBookingVisibilityConverter : IValueConverter
+    {
+
+        private IPreferencesWrapper _preferences;
 
         public PendingBookingVisibilityConverter()
         {
@@ -18,10 +18,17 @@ namespace VocalLink_L00152171.Converters
             _preferences = preferences;
         }
 
+
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var booking = value as Booking;
             if (booking == null) return false;
+
+            if (_preferences == null)
+            {
+                // Manually create the default PreferencesWrapper if it's null
+                _preferences = new PreferencesWrapper();
+            }
 
             var isSinger = _preferences.GetIsSinger();
             return booking.Status == "Pending" && isSinger;

@@ -5,23 +5,21 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:m="clr-namespace:VocalLink_L00152171.Model"
     xmlns:vm="clr-namespace:VocalLink_L00152171.ViewModels"
-    Title="UserBookingsPage"
-    x:DataType="vm:UserBookingsViewModel">
+    Title=""
+    x:DataType="vm:UserBookingsViewModel"
+    BackgroundColor="#E6F0F7">
 
     <ContentPage.BindingContext>
         <vm:UserBookingsViewModel />
     </ContentPage.BindingContext>
 
     <ScrollView>
-        <VerticalStackLayout Padding="10" Spacing="15">
-            <Label
-                x:Name="welcomeLabel"
-                FontAttributes="Bold"
-                FontSize="20"
-                HorizontalOptions="Center"
-                TextColor="DarkBlue" />
+        <VerticalStackLayout
+            Padding="10"
+            Spacing="15"
+            WidthRequest="600">
 
-            <!--  Legend  -->
+            <!--  legend  -->
             <Label FontAttributes="Bold" Text="Legend:" />
             <HorizontalStackLayout Spacing="15">
 
@@ -57,7 +55,7 @@
                 </HorizontalStackLayout>
             </HorizontalStackLayout>
 
-            <!--  Bookings List  -->
+            <!--  bookings  -->
             <Label
                 Margin="0,10,0,5"
                 FontAttributes="Bold"
@@ -104,7 +102,7 @@
                                 <Label Text="{Binding SingerName, StringFormat='Singer: {0}'}" />
                                 <Label Text="{Binding BusinessEmail, StringFormat='Booked by: {0}'}" />
 
-                                <!--  Accept / Decline for singers and pending bookings  -->
+                                <!--  Accept/Decline for singers and pending bookings  -->
                                 <HorizontalStackLayout IsVisible="{Binding ., Converter={StaticResource PendingBookingVisibilityConverter}}" Spacing="10">
                                     <Button
                                         Command="{Binding Source={RelativeSource AncestorType={x:Type vm:UserBookingsViewModel}}, Path=AcceptCommand}"
@@ -122,7 +120,6 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

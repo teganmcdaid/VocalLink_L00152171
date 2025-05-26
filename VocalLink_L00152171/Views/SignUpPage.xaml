@@ -1,65 +1,74 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodels="clr-namespace:VocalLink_L00152171.ViewModels"
-             x:Class="VocalLink_L00152171.Views.SignUpPage"
-             Title="SignUpPage">
-    
+<ContentPage
+    x:Class="VocalLink_L00152171.Views.SignUpPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:VocalLink_L00152171.ViewModels"
+    Title=""
+    BackgroundColor="#E6F0F7">
+
     <ContentPage.BindingContext>
-        <viewmodels:SignUpViewModel/>
+        <viewmodels:SignUpViewModel />
     </ContentPage.BindingContext>
 
-    <VerticalStackLayout Padding="20"
-                         Spacing="10">
-        <Label Text="Sign Up to Vocal Link"
-               FontSize="24"
-               HorizontalOptions="Center"/>
+    <VerticalStackLayout Padding="20" Spacing="10">
+        <Label
+            FontSize="24"
+            HorizontalOptions="Center"
+            Text="Sign Up to Vocal Link" />
 
-        <Grid ColumnDefinitions="*,10,250,10,*"
-              RowDefinitions="*,*,*,*">
+        <Grid ColumnDefinitions="*,10,250,10,*" RowDefinitions="*,*,*,*">
 
-            <Border StrokeShape="RoundRectangle 80"
-                    Stroke="{StaticResource Primary}"
-                    StrokeThickness="6"
-                    Grid.Column="2"
-                    Grid.Row="0"
-                    Margin="10">
-                <Image Source="applogo.png"/>
+            <Border
+                Grid.Row="0"
+                Grid.Column="2"
+                Margin="10"
+                Stroke="{StaticResource Primary}"
+                StrokeShape="RoundRectangle 80"
+                StrokeThickness="6">
+                <Image Source="applogo.png" />
             </Border>
 
-            <VerticalStackLayout Grid.Column="2"
-                                 Grid.Row="1">
-                <Entry Placeholder="Username"
-                       Text="{Binding UserEmail}"/>
+            <VerticalStackLayout Grid.Row="1" Grid.Column="2">
+                <Entry
+                    BackgroundColor="White"
+                    Placeholder="Email"
+                    Text="{Binding UserEmail}" />
 
-                <Entry Placeholder="Password"
-                       Text="{Binding Password}"/>
+                <Entry
+                    BackgroundColor="White"
+                    Placeholder="Password"
+                    Text="{Binding Password}" />
             </VerticalStackLayout>
 
-            <HorizontalStackLayout Grid.Column="2"
-                                   Grid.Row="2"
-                                   HorizontalOptions="Center">
-                <Label Text="Are you a Singer?"
-                       VerticalOptions="Center"/>
-                <CheckBox IsChecked="{Binding IsSinger}"/>
+            <HorizontalStackLayout
+                Grid.Row="2"
+                Grid.Column="2"
+                HorizontalOptions="Center">
+                <Label Text="Are you a Singer?" VerticalOptions="Center" />
+                <CheckBox BackgroundColor="White" IsChecked="{Binding IsSinger}" />
             </HorizontalStackLayout>
 
-            <HorizontalStackLayout Grid.Column="2"
-                                   Grid.Row="3"
-                                   HorizontalOptions="Center">
-                <Button Text="Sign Up"
-                        Command="{Binding SignUpCommand}"
-                        BackgroundColor="Green"
-                        TextColor="White"
-                        Margin="15" 
-                        WidthRequest="90"/>
+            <HorizontalStackLayout
+                Grid.Row="3"
+                Grid.Column="2"
+                HorizontalOptions="Center">
 
-                <Button Text="Cancel"
-                        Command="{Binding CancelCommand}"
-                        BackgroundColor="Red"
-                        TextColor="Black"
-                        Margin="15"
-                        WidthRequest="90"/>
+                <Button
+                    Margin="15"
+                    BackgroundColor="Red"
+                    Command="{Binding CancelCommand}"
+                    Text="Cancel"
+                    TextColor="Black"
+                    WidthRequest="90" />
+
+                <Button
+                    Margin="15"
+                    BackgroundColor="Green"
+                    Command="{Binding SignUpCommand}"
+                    Text="Sign Up"
+                    TextColor="White"
+                    WidthRequest="90" />
             </HorizontalStackLayout>
 
         </Grid>
