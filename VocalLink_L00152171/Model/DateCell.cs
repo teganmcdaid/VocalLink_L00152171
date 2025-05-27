@@ -1,14 +1,24 @@
+// <copyright file="DateCell.cs" company="Tegan McDaid">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
-using CommunityToolkit.Mvvm.ComponentModel;
-using SQLite;
-
-namespace VocalLink_L00152171.Model;
-
-//want to make observable object so that it will be able to notify the view when the data changes
-public partial class DateCell : ObservableObject
+namespace VocalLink_L00152171.Model
 {
-    [ObservableProperty] private DateTime date;
-    [ObservableProperty] private string status; 
+    using CommunityToolkit.Mvvm.ComponentModel;
 
-    public bool IsAvailable => Status == "Available";
+    /// <summary>
+    /// Model for storing Date Cell.
+    /// </summary>
+    public partial class DateCell : ObservableObject
+    {
+        [ObservableProperty]
+        private DateTime date;
+        [ObservableProperty]
+        private string status;
+
+        /// <summary>
+        /// Gets a value indicating whether the date cell is available.
+        /// </summary>
+        public bool IsAvailable => this.Status == "Available";
+    }
 }

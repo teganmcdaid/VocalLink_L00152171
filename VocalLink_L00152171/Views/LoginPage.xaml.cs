@@ -1,30 +1,43 @@
-using VocalLink_L00152171.ViewModels;
+// <copyright file="LoginPage.xaml.cs" company="Tegan McDaid">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
-namespace VocalLink_L00152171.Views;
-
-public partial class LoginPage : ContentPage
+namespace VocalLink_L00152171.Views
 {
-    public LoginPage()
+    using VocalLink_L00152171.ViewModels;
+
+    /// <summary>
+    /// Login Page for the VocalLink application.
+    /// </summary>
+    public partial class LoginPage : ContentPage
     {
-        InitializeComponent();
-        BindingContext = new LoginViewModel();
-    }
-
-
-    protected override void OnAppearing()
-    {
-        base.OnAppearing();
-
-        //clear fields when page opened
-        if (BindingContext is LoginViewModel viewModel)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LoginPage"/> class.
+        /// </summary>
+        public LoginPage()
         {
-            viewModel.ClearFields();
+            this.InitializeComponent();
+            this.BindingContext = new LoginViewModel();
         }
 
-        //disable flyout navigation
-        if (Shell.Current is AppShell shell)
+        /// <summary>
+        /// Method to implement this on page appearing.
+        /// </summary>
+        protected override void OnAppearing()
         {
-            shell.DisableFlyout();
+            base.OnAppearing();
+
+            // clear fields when page opened
+            if (this.BindingContext is LoginViewModel viewModel)
+            {
+                viewModel.ClearFields();
+            }
+
+            // disable flyout navigation
+            if (Shell.Current is AppShell shell)
+            {
+                shell.DisableFlyout();
+            }
         }
     }
 }

@@ -1,32 +1,44 @@
+// <copyright file="HomePage.xaml.cs" company="Tegan McDaid">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
-using VocalLink_L00152171.ViewModels;
-
-namespace VocalLink_L00152171.Views;
-
-public partial class HomePage : ContentPage
+namespace VocalLink_L00152171.Views
 {
-    public HomePage()
+    using VocalLink_L00152171.ViewModels;
+
+    /// <summary>
+    /// Home Page for the VocalLink application.
+    /// </summary>
+    public partial class HomePage : ContentPage
     {
-        InitializeComponent();
-        BindingContext = new HomePageViewModel();
-    }
-
-    //used to enable the flyout menu when on home page
-    protected override async void OnAppearing()
-    {
-        base.OnAppearing();
-
-        welcomeLabel.Text = ("Welcome " + Preferences.Get("UserEmail", "Guest"));
-
-        if (BindingContext is HomePageViewModel vm)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HomePage"/> class.
+        /// </summary>
+        public HomePage()
         {
-            await vm.LoadDataAsync();
+            this.InitializeComponent();
+            this.BindingContext = new HomePageViewModel();
         }
 
-        //enable flyout navigation
-        if (Shell.Current is AppShell shell)
+        /// <summary>
+        /// Method to implement this on page appearing.
+        /// </summary>
+        protected override async void OnAppearing()
         {
-            shell.EnableFlyout();
+            base.OnAppearing();
+
+            this.welcomeLabel.Text = "Welcome " + Preferences.Get("UserEmail", "Guest");
+
+            if (this.BindingContext is HomePageViewModel vm)
+            {
+                await vm.LoadDataAsync();
+            }
+
+            // enable flyout navigation
+            if (Shell.Current is AppShell shell)
+            {
+                shell.EnableFlyout();
+            }
         }
     }
 }
