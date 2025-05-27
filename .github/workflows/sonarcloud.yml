@@ -37,9 +37,11 @@ jobs:
       # Run analysis
       - name: SonarCloud_Scan
         uses: SonarSource/sonarqube-scan-action@v4
+        with:
+          args: >
+            -Dsonar.projectKey=teganmcdaid_VocalLink_L00152171
+            -Dsonar.organization=teganmcdaid
+            -Dsonar.host.url=https://sonarcloud.io
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          projectKey: "teganmcdaid_VocalLink_L00152171"
-          organization: "teganmcdaid"
 
