@@ -8,6 +8,7 @@ namespace VocalLink_L00152171.ViewModels
     using CommunityToolkit.Mvvm.ComponentModel;
     using CommunityToolkit.Mvvm.Input;
     using VocalLink_L00152171.Model;
+    using VocalLink_L00152171.Services;
 
     /// <summary>
     /// User Bookings view model for all bookings page logic.
@@ -17,6 +18,8 @@ namespace VocalLink_L00152171.ViewModels
         // used for bookings for the bookings list
         [ObservableProperty]
         private ObservableCollection<Booking> bookings;
+
+        private EmailService emailService = new EmailService();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UserBookingsViewModel"/> class.
@@ -52,6 +55,7 @@ namespace VocalLink_L00152171.ViewModels
             booking.Status = "Booked";
             await App.Database.SaveBookingAsync(booking);
             await Shell.Current.DisplayAlert("Accepted", "Booking accepted.", "OK");
+            await this.emailService.SendEmailAsync($"{booking.BusinessEmail}", "Booking Accepted", $"Booking request for {booking.SingerName} on {booking.Date} has been Accepted");
             this.LoadBookingsAsync();
         }
 
@@ -61,6 +65,8 @@ namespace VocalLink_L00152171.ViewModels
             booking.Status = "Declined";
             await App.Database.SaveBookingAsync(booking);
             await Shell.Current.DisplayAlert("Declined", "Booking declined.", "OK");
+            await this.emailService.SendEmailAsync($"{booking.BusinessEmail}", "Booking Declined", $"Booking request for {booking.SingerName} on {booking.Date} has been Declined");
+
             this.LoadBookingsAsync();
         }
     }
