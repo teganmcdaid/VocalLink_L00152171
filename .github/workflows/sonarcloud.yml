@@ -16,45 +16,10 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
         with:
-          fetch-depth: 0
-
-      - name: Setup_dotnet
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '8.0.x'
-
-      - name: Install_workloads
-        run: dotnet workload install maui 
-
-      - name: Install_SonarScanner
-        run: dotnet tool install --global dotnet-sonarscanner
-
-      - name: Add_SonarScanner_to_PATH
-        run: echo "$env:USERPROFILE\.dotnet\tools" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-        shell: pwsh
-
-      - name: Restore_dependencies
-        run: dotnet restore VocalLink_L00152171.sln
-
-      - name: Begin_analysis
-        run: |
-          dotnet sonarscanner begin \
-            /k:"VocalLink_L00152171" \
-            /o:"teganmcdaid" \
-            /d:sonar.token="${{ secrets.SONAR_TOKEN }}" \
-            /d:sonar.host.url="https://sonarcloud.io" \
-            /d:sonar.projectBaseDir="${{ github.workspace }}"
-        env:
+          fetch-depth: 0  
+      - name: SonarQubeScan
+        uses: SonarSource/sonarqube-scan-action@v4
+        env: 
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Build_Solution
-        run: dotnet build VocalLink_L00152171.sln --configuration Release
-
-      - name: End_analysis
-        run: dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
