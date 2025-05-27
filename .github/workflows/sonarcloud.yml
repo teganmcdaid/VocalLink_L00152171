@@ -1,5 +1,4 @@
 name: SonarCloud Analysis
-#run on push to master
 on:
   pull_request:
     branches: [master]
@@ -9,17 +8,32 @@ on:
 permissions:
   contents: read
   pull-requests: write
-  
+
 jobs:
   sonarcloud:
-    name: SonarCloud
+    name: SonarCloud Analysis
     runs-on: windows-latest
 
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0  
-      - name: SonarQubeScan
+          fetch-depth: 0 
+
+      # Set up .NET SDK
+      - name: Setup_.NET
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: '8.0' 
+
+      - name: Build 
+        run: dotnet build VocalLink_L00152171.sln -c Release
+
+      # Run analysis
+      - name: SonarCloud_Scan
         uses: SonarSource/sonarqube-scan-action@v4
-        env: 
+        env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          projectKey: "teganmcdaid_VocalLink_L00152171"
+          organization: "teganmcdaid"
+
