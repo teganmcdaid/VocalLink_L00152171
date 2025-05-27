@@ -6,6 +6,10 @@ on:
   push:
     branches: [master]
 
+permissions:
+  contents: read
+  pull-requests: write
+  
 jobs:
   sonarcloud:
     name: SonarCloud
@@ -36,7 +40,7 @@ jobs:
 
       #run analysis
       - name: Start_SonarCloud
-        run: dotnet sonarscanner begin /k:"VocalLink_L00152171" /o:"teganmcdaid" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
+        run: dotnet sonarscanner begin /k:"VocalLink_L00152171" /o:"teganmcdaid" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.projectBaseDir="$(System.DefaultWorkingDirectory)"
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
