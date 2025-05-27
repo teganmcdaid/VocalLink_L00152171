@@ -1,13 +1,24 @@
-﻿using Microsoft.Extensions.Logging;
-using Syncfusion.Maui.Core.Hosting;
-using VocalLink_L00152171.Services;
+﻿// <copyright file="MauiProgram.cs" company="Tegan McDaid">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace VocalLink_L00152171
 {
+    using Microsoft.Extensions.Logging;
+    using Syncfusion.Maui.Core.Hosting;
+    using VocalLink_L00152171.Services;
+
+    /// <summary>
+    /// MauiProgram class for configuring the application.
+    /// </summary>
     public static class MauiProgram
     {
+        /// <summary>
+        /// Creates the Maui application instance.
+        /// </summary>
+        /// <returns> Maui application. </returns>
         public static MauiApp CreateMauiApp()
-        { 
+        {
             // Register the Syncfusion license key
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NNaF5cXmBCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdmWXped3VSQmJeVExxVktWYUA=");
 

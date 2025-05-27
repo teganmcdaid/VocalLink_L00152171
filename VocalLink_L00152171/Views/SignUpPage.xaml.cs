@@ -1,23 +1,35 @@
-using VocalLink_L00152171.ViewModels;
+// <copyright file="SignUpPage.xaml.cs" company="Tegan McDaid">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
-namespace VocalLink_L00152171.Views;
-
-public partial class SignUpPage : ContentPage
+namespace VocalLink_L00152171.Views
 {
-	public SignUpPage()
-	{
-		InitializeComponent();
-		BindingContext = new SignUpViewModel();
-	}
+    using VocalLink_L00152171.ViewModels;
 
-    //user to clear the fields when page is opened first
-    protected override void OnAppearing()
+    /// <summary>
+    /// Sign up page for the VocalLink application.
+    /// </summary>
+    public partial class SignUpPage : ContentPage
     {
-        base.OnAppearing();
-        if(BindingContext is SignUpViewModel viewModel)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SignUpPage"/> class.
+        /// </summary>
+        public SignUpPage()
         {
-            viewModel.ClearFields();
+            this.InitializeComponent();
+            this.BindingContext = new SignUpViewModel();
         }
 
+        /// <summary>
+        /// method to implement this on page appearing.
+        /// </summary>
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            if (this.BindingContext is SignUpViewModel viewModel)
+            {
+                viewModel.ClearFields();
+            }
+        }
     }
 }

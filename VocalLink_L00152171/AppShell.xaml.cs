@@ -1,12 +1,22 @@
-﻿using VocalLink_L00152171.Views;
+﻿// <copyright file="AppShell.xaml.cs" company="Tegan Mc Daid">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace VocalLink_L00152171
 {
+    using VocalLink_L00152171.Views;
+
+    /// <summary>
+    /// application shell for the VocalLink application.
+    /// </summary>
     public partial class AppShell : Shell
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AppShell"/> class.
+        /// </summary>
         public AppShell()
         {
-            InitializeComponent();
+            this.InitializeComponent();
             Routing.RegisterRoute("LoginPage", typeof(LoginPage));
             Routing.RegisterRoute("SignUpPage", typeof(SignUpPage));
             Routing.RegisterRoute("SingerSetupPage", typeof(SingerSetupPage));
@@ -26,11 +36,18 @@ namespace VocalLink_L00152171
                 }
             });
         }
+
+        /// <summary>
+        /// Enables flyout navigation for the application shell.
+        /// </summary>
         public void EnableFlyout()
         {
             Shell.Current.FlyoutBehavior = FlyoutBehavior.Flyout;
         }
 
+        /// <summary>
+        /// Disables flyout navigation for the application shell.
+        /// </summary>
         public void DisableFlyout()
         {
             Shell.Current.FlyoutBehavior = FlyoutBehavior.Disabled;

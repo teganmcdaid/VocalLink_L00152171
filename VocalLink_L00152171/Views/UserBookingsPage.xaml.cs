@@ -1,21 +1,35 @@
-using VocalLink_L00152171.ViewModels;
+// <copyright file="UserBookingsPage.xaml.cs" company="Tegan McDaid">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
-namespace VocalLink_L00152171.Views;
-
-public partial class UserBookingsPage : ContentPage
+namespace VocalLink_L00152171.Views
 {
-	public UserBookingsPage()
-	{
-		InitializeComponent();
-    }
+    using VocalLink_L00152171.ViewModels;
 
-    protected override async void OnAppearing()
+    /// <summary>
+    /// Booking page for the VocalLink application.
+    /// </summary>
+    public partial class UserBookingsPage : ContentPage
     {
-        base.OnAppearing();
-
-        if (BindingContext is UserBookingsViewModel vm)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UserBookingsPage"/> class.
+        /// </summary>
+        public UserBookingsPage()
         {
-            vm.LoadBookingsAsync();
+            this.InitializeComponent();
+        }
+
+        /// <summary>
+        /// method to implement this on page appearing.
+        /// </summary>
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            if (this.BindingContext is UserBookingsViewModel vm)
+            {
+                vm.LoadBookingsAsync();
+            }
         }
     }
 }

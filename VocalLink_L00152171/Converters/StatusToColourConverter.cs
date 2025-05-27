@@ -1,23 +1,33 @@
-using System.Globalization;
+// <copyright file="StatusToColourConverter.cs" company="Tegan McDaid">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
-namespace VocalLink_L00152171.Converters;
-
-public class StatusToColorConverter : IValueConverter
+namespace VocalLink_L00152171.Converters
 {
-    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    using System.Globalization;
+
+    /// <summary>
+    /// This class is used to assign a colour based on the booking status.
+    /// </summary>
+    public class StatusToColourConverter : IValueConverter
     {
-        string status = value?.ToString();
-
-        return status switch
+        /// Method to assign the colours.<inheritdoc/>
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            "Available" => Colors.Green,
-            "Pending" => Colors.Orange,
-            "Booked" => Colors.Blue,
-            "Declined" => Colors.Red,
-            _ => Colors.LightGray
-        };
-    }
+            string? status = value?.ToString();
 
-    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        => throw new NotImplementedException();
+            return status switch
+            {
+                "Available" => Colors.Green,
+                "Pending" => Colors.Orange,
+                "Booked" => Colors.Blue,
+                "Declined" => Colors.Red,
+                _ => Colors.LightGray
+            };
+        }
+
+        /// This method is not needed for this functionality. <inheritdoc/>
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+            => throw new NotImplementedException();
+    }
 }
