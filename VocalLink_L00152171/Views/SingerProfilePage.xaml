@@ -5,25 +5,94 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:model="clr-namespace:VocalLink_L00152171.Model"
     xmlns:vm="clr-namespace:VocalLink_L00152171.ViewModels"
-    Title="SingerProfilePage"
-    x:DataType="vm:SingerProfileViewModel">
+    Title=""
+    x:DataType="vm:SingerProfileViewModel"
+    BackgroundColor="#E6F0F7">
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="15">
-
+        <VerticalStackLayout
+            Padding="20"
+            Spacing="15"
+            WidthRequest="600">
             <!--  basic singer info  -->
-            <Label
-                FontAttributes="Bold"
-                FontSize="24"
-                Text="{Binding Name}" />
-            <Label FontSize="18" Text="{Binding Genre}" />
-            <Label FontSize="18" Text="{Binding Location}" />
-            <Label FontSize="14" Text="{Binding AboutMe}" />
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="30"
+                    Text="Name: " />
+                <Label FontSize="30" Text="{Binding Name}" />
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    Text="Genre: " />
+                <Label FontSize="18" Text="{Binding Genre}" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    Text="Location: " />
+                <Label FontSize="18" Text="{Binding Location}" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="14"
+                    Text="About me: " />
+                <Label FontSize="14" Text="{Binding AboutMe}" />
+            </HorizontalStackLayout>
 
             <!--  title for the calendar  -->
             <Label
                 FontAttributes="Bold"
                 FontSize="20"
                 Text="Select a date to book:" />
+
+            <!--  booking status legend  -->
+            <HorizontalStackLayout Spacing="15">
+                <HorizontalStackLayout>
+                    <BoxView
+                        HeightRequest="20"
+                        WidthRequest="20"
+                        Color="Green" />
+                    <Label
+                        Margin="5,0,0,0"
+                        Text="Available"
+                        VerticalOptions="Center" />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <BoxView
+                        HeightRequest="20"
+                        WidthRequest="20"
+                        Color="Blue" />
+                    <Label
+                        Margin="5,0,0,0"
+                        Text="Booked"
+                        VerticalOptions="Center" />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <BoxView
+                        HeightRequest="20"
+                        WidthRequest="20"
+                        Color="Orange" />
+                    <Label
+                        Margin="5,0,0,0"
+                        Text="Pending"
+                        VerticalOptions="Center" />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <BoxView
+                        HeightRequest="20"
+                        WidthRequest="20"
+                        Color="Red" />
+                    <Label
+                        Margin="5,0,0,0"
+                        Text="Declined"
+                        VerticalOptions="Center" />
+                </HorizontalStackLayout>
+            </HorizontalStackLayout>
 
             <!--  days of the week headers  -->
             <Grid
@@ -102,51 +171,6 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-
-            <!--  Booking Status Legend  -->
-            <Label FontAttributes="Bold" Text="Legend:" />
-            <HorizontalStackLayout Spacing="15">
-                <HorizontalStackLayout>
-                    <BoxView
-                        HeightRequest="20"
-                        WidthRequest="20"
-                        Color="Green" />
-                    <Label
-                        Margin="5,0,0,0"
-                        Text="Available"
-                        VerticalOptions="Center" />
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <BoxView
-                        HeightRequest="20"
-                        WidthRequest="20"
-                        Color="Blue" />
-                    <Label
-                        Margin="5,0,0,0"
-                        Text="Booked"
-                        VerticalOptions="Center" />
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <BoxView
-                        HeightRequest="20"
-                        WidthRequest="20"
-                        Color="Orange" />
-                    <Label
-                        Margin="5,0,0,0"
-                        Text="Pending"
-                        VerticalOptions="Center" />
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <BoxView
-                        HeightRequest="20"
-                        WidthRequest="20"
-                        Color="Red" />
-                    <Label
-                        Margin="5,0,0,0"
-                        Text="Declined"
-                        VerticalOptions="Center" />
-                </HorizontalStackLayout>
-            </HorizontalStackLayout>
 
         </VerticalStackLayout>
     </ScrollView>

@@ -7,7 +7,6 @@ public partial class UserBookingsPage : ContentPage
 	public UserBookingsPage()
 	{
 		InitializeComponent();
-        welcomeLabel.Text = ("Hello " + Preferences.Get("UserEmail", "Guest"));
     }
 
     protected override async void OnAppearing()

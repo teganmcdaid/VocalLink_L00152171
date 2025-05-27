@@ -22,7 +22,7 @@ public partial class SignUpViewModel : BaseViewModel
         //check if fields are empty
         if (string.IsNullOrWhiteSpace(UserEmail) || string.IsNullOrWhiteSpace(Password))
         {
-            await App.Current.MainPage.DisplayAlert("Error", "Please enter a username and Phone Number.", "OK");
+            await App.Current.MainPage.DisplayAlert("Error", "Please enter a username and password.", "OK");
             return;
         }
 

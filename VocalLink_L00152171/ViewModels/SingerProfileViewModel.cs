@@ -14,7 +14,7 @@ public partial class SingerProfileViewModel : BaseViewModel
     [ObservableProperty] private string genre;
     [ObservableProperty] private string location;
     [ObservableProperty] private string aboutMe;
-    
+
 
     [ObservableProperty] private ObservableCollection<Booking> bookings;
     [ObservableProperty] private ObservableCollection<DateCell> dateCells;

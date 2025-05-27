@@ -1,27 +1,62 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodels="clr-namespace:VocalLink_L00152171.ViewModels"
-             x:Class="VocalLink_L00152171.Views.SingerSetupPage"
-             Title="SingerSetupPage">
-    
+<ContentPage
+    x:Class="VocalLink_L00152171.Views.SingerSetupPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:VocalLink_L00152171.ViewModels"
+    Title=""
+    BackgroundColor="#E6F0F7">
+
     <ContentPage.BindingContext>
         <viewmodels:SingerSetupViewModel />
     </ContentPage.BindingContext>
 
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="15">
-            <Label Text="Complete Your Singer Profile" FontSize="24" HorizontalOptions="Center" />
+        <VerticalStackLayout
+            Padding="20"
+            Spacing="15"
+            WidthRequest="500">
+            <Border
+                Margin="10"
+                Stroke="{StaticResource Primary}"
+                StrokeShape="RoundRectangle 80"
+                StrokeThickness="6"
+                WidthRequest="150">
+                <Image Source="singerpage.png" />
+            </Border>
+            <Label
+                FontSize="24"
+                HorizontalOptions="Center"
+                Text="Complete Your Singer Profile" />
 
-            <Entry Placeholder="Display Name" Text="{Binding Name}" />
+            <Entry
+                BackgroundColor="White"
+                Placeholder="Display Name"
+                Text="{Binding Name}" />
 
-            <Picker Title="Select Genre" ItemsSource="{Binding Genres}" SelectedItem="{Binding Genre}" />
+            <Picker
+                Title="Select Genre"
+                BackgroundColor="White"
+                ItemsSource="{Binding Genres}"
+                SelectedItem="{Binding Genre}" />
 
-            <Entry Placeholder="Location" Text="{Binding Location}" />
+            <Entry
+                BackgroundColor="White"
+                Placeholder="Location"
+                Text="{Binding Location}" />
 
-            <Editor Placeholder="Tell us about yourself..." AutoSize="TextChanges" Text="{Binding AboutMe}" />
+            <Editor
+                AutoSize="TextChanges"
+                BackgroundColor="White"
+                Placeholder="Tell us about yourself..."
+                Text="{Binding AboutMe}" />
 
-            <Button Text="Save Profile" Command="{Binding SaveProfileCommand}" BackgroundColor="Green" TextColor="White" />
+            <Button
+                BackgroundColor="Green"
+                Command="{Binding SaveProfileCommand}"
+                Text="Save Profile"
+                TextColor="White"
+                WidthRequest="200" />
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

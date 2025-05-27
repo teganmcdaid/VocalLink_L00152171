@@ -22,7 +22,7 @@ namespace VocalLink_L00152171
 
             MainPage = new AppShell();
 
-            
+
         }
     }
 }
