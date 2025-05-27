@@ -11,51 +11,60 @@
         <vm:SingerEditViewModel />
     </ContentPage.BindingContext>
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="15" WidthRequest="500">
-            <Border StrokeShape="RoundRectangle 80" WidthRequest="150"
-                    Stroke="{StaticResource Primary}"
-                    StrokeThickness="6"
-                    Margin="10">
-                <Image Source="singerpage.png"/>
+        <VerticalStackLayout
+            Padding="20"
+            Spacing="15"
+            WidthRequest="500">
+            <Border
+                Margin="10"
+                Stroke="{StaticResource Primary}"
+                StrokeShape="RoundRectangle 80"
+                StrokeThickness="6"
+                WidthRequest="150">
+                <Image Source="singerpage.png" />
             </Border>
             <Label
                 FontSize="24"
                 HorizontalOptions="Center"
                 Text="Edit Your Profile" />
 
-            <Entry Placeholder="Display Name" Text="{Binding Name}"
-                   BackgroundColor="White"/>
+            <Entry
+                BackgroundColor="White"
+                Placeholder="Display Name"
+                Text="{Binding Name}" />
 
             <Picker
                 Title="Select Genre"
+                BackgroundColor="White"
                 ItemsSource="{Binding Genres}"
-                SelectedItem="{Binding Genre}"
-                BackgroundColor="White"/>
+                SelectedItem="{Binding Genre}" />
 
-            <Entry Placeholder="Location" Text="{Binding Location}"
-                   BackgroundColor="White"/>
+            <Entry
+                BackgroundColor="White"
+                Placeholder="Location"
+                Text="{Binding Location}" />
 
             <Editor
                 AutoSize="TextChanges"
+                BackgroundColor="White"
                 Placeholder="Tell us about yourself..."
-                Text="{Binding AboutMe}"
-                BackgroundColor="White"/>
+                Text="{Binding AboutMe}" />
 
             <HorizontalStackLayout Spacing="10">
                 <Button
+                    Margin="15"
                     BackgroundColor="Green"
                     Command="{Binding SaveCommand}"
                     Text="Save"
                     TextColor="White"
-                    Margin="15" 
-                    WidthRequest="90"/>
+                    WidthRequest="90" />
                 <Button
+                    Margin="15"
                     BackgroundColor="Gray"
                     Command="{Binding CancelCommand}"
                     Text="Cancel"
                     TextColor="White"
-                    Margin="15" 
-                    WidthRequest="90"/>
+                    WidthRequest="90" />
             </HorizontalStackLayout>
         </VerticalStackLayout>
     </ScrollView>

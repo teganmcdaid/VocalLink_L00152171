@@ -42,4 +42,11 @@
             ContentTemplate="{DataTemplate views:UserBookingsPage}"
             Route="UserBookingsPage" />
     </FlyoutItem>
+
+    <FlyoutItem Title="Developer Settings" Icon="settings.png">
+        <ShellContent
+            Title="Deveoper Settings"
+            ContentTemplate="{DataTemplate views:DeveloperSettingsPage}"
+            Route="DeveloperSettingsPage" />
+    </FlyoutItem>
 </Shell>
