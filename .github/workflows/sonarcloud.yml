@@ -39,12 +39,12 @@ jobs:
         run: dotnet restore VocalLink_L00152171.sln
 
       - name: Begin_analysis
-        run: >
-          dotnet sonarscanner begin
-            /k:"VocalLink_L00152171"
-            /o:"teganmcdaid"
-            /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
-            /d:sonar.host.url="https://sonarcloud.io"
+        run: |
+          dotnet sonarscanner begin \
+            /k:"VocalLink_L00152171" \
+            /o:"teganmcdaid" \
+            /d:sonar.token="${{ secrets.SONAR_TOKEN }}" \
+            /d:sonar.host.url="https://sonarcloud.io" \
             /d:sonar.projectBaseDir="${{ github.workspace }}"
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
