@@ -150,7 +150,7 @@
                     <DataTemplate x:DataType="model:DateCell">
                         <Frame
                             Padding="10"
-                            BackgroundColor="{Binding Status, Converter={StaticResource StatusToColorConverter}}"
+                            BackgroundColor="{Binding Status, Converter={StaticResource StatusToColourConverter}}"
                             BorderColor="Black"
                             CornerRadius="10"
                             HasShadow="True"
