@@ -25,8 +25,14 @@ jobs:
         with:
           dotnet-version: '8.0' 
 
-      - name: Build 
-        run: dotnet build VocalLink_L00152171.sln -c Release
+      - name: Install_workloads
+        run: dotnet workload install maui
+        
+      - name: Restore_dependencies
+        run: dotnet restore VocalLink_L00152171.sln
+        
+      - name: Build
+        run: dotnet build VocalLink_L00152171.sln 
 
       # Run analysis
       - name: SonarCloud_Scan
